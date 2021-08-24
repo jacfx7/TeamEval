@@ -1,4 +1,72 @@
-/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~ngx-toastr/toastr";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #e01a76;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 85%;
+  }
+}
+
+#toast-container > div {
+    opacity: 1;
+  }
+  
+  table.mat-table {
+    width: 100%;
+  }
+  
+  .mat-row:hover .mat-cell {
+    background-color: #fff099;
+  }
+  
+  .mat-tab-body-content {
+    height: 100%;
+    overflow: visible !important;
+    padding-top: 10px;
+  }
+  
+  td.mat-cell {
+    padding: 5px !important;
+  }
+  
+  th.mat-header-cell {
+    padding: 5px !important;
+  }
+  
+  .button-group button[mat-button], .button-group button[mat-raised-button], .button-group a[mat-button], .button-group a[mat-raised-button] {
+    margin-right: 8px;
+  }
+  
+  .mat-card {
+    margin-bottom: 10px;
+  }
+
+  .account-form{
+    mat-card {
+        max-width: 400px;
+        margin: 2em auto;
+        text-align: center;
+      }
+      
+      mat-form-field {
+        display: block;
+      }
+  }

@@ -1,1 +1,26 @@
-<p>manage-teams works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Manage Teams for {{selectedSport?.name}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="row col-sm-4">
+            <mat-form-field appearance="outline">
+                <mat-label>Select Team</mat-label>
+                <mat-select [(value)]="selectedTeam">
+                    <mat-option *ngFor="let team of allTeams" [value]="team">
+                        {{team.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" (click)="addNewTeam()">Add New Team</button>
+        <div *ngIf="showAddNewTeam" class="my-3">
+            <app-new-team [sport]="selectedSport" (saveComplete)="saveComplete($event)"></app-new-team>
+        </div>
+    </mat-card-content>
+</mat-card>
+<div class="my-4">
+    <mat-card>
+
+    </mat-card>
+</div>

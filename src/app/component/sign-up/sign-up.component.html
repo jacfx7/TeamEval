@@ -1,45 +1,61 @@
-<div class="displayTable">
-    <div class="displayTableCell">
-  
-      <div class="authBlock">
-        <h3>Sign Up</h3>
-  
-        <div class="formGroup">
-          <input type="email" class="formControl" placeholder="Email Address" #userEmail required>
+<div class="account-form">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Sign Up</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="formGroup" name="SignUpForm">
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>Email Address</mat-label>
+            <input matInput type="email" formControlName="email" class="formControl" placeholder="Email Address"
+              #userEmail required>
+            <mat-error *ngIf="email?.hasError('email') && !email?.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="email?.hasError('required')">
+              Email is required
+            </mat-error>
+          </mat-form-field>
         </div>
-  
-        <div class="formGroup">
-          <input type="password" class="formControl" placeholder="Password" #userPwd required>
+
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" class="formControl" placeholder="Password"
+              #userPwd required>
+            <mat-error *ngIf="password?.hasError('required')">
+              Password is required
+            </mat-error>
+            <mat-error *ngIf="password?.hasError('minlength')">
+              Password must be at least {{minPw}} characters
+            </mat-error>
+          </mat-form-field>
         </div>
-  
-        <div class="formGroup">
-          <input type="button" class="btn btnPrimary" value="Sign Up" (click)="authService.SignUp(userEmail.value, userPwd.value)">
+
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" formControlName="confirm_password" class="formControl"
+              placeholder="Confirm Password" #userPwdCmf required>
+            <mat-error
+              *ngIf="confirm_password?.hasError('confirmedValidator') && !confirm_password?.hasError('required')">
+              Password and password confirmation must match
+            </mat-error>
+            <mat-error *ngIf="confirm_password?.hasError('required')">
+              Confirm password is required
+            </mat-error>
+          </mat-form-field>
         </div>
-  
-        <div class="formGroup">
-          <span class="or"><span class="orInner">Or</span></span>
+
+        <button mat-raised-button color="primary" (click)="authService.SignUp(userEmail.value, userPwd.value)"
+          [disabled]="!formGroup.valid">Sign
+          Up</button>
+
+        <div class="redirectToLogin mt-3">
+          <span>Already have an account? <a class="redirect mx-1" routerLink="/sign-in">Log In</a></span>
         </div>
-  
-        <!-- Continue with Google -->
-        <div class="formGroup">
-          <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
-            <i class="fab fa-google-plus-g"></i>
-            Continue with Google
-          </button>
-        </div>
-  
-        <!-- Continue with Facebook 
-        <div class="formGroup">
-          <button type="button" class="btn facebookBtn" (click)="authService.FacebookAuth()">
-            <i class="fab fa-facebook"></i>
-            Continue with Facebook
-          </button>
-        </div>
-      </div>-->
-  
-      <div class="redirectToLogin">
-        <span>Already have an account? <span class="redirect" routerLink="/sign-in">Log In</span></span>
-      </div>
-    </div>
-  
-  </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

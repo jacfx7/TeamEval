@@ -1,0 +1,21 @@
+<form [formGroup]="formGroup" name="loginForm">
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Team Name</mat-label>
+            <input matInput type="text" formControlName="teamName" class="formControl" placeholder="Team Name"
+                #teamNameInput required>
+            <mat-error *ngIf="teamName?.hasError('required')">
+                Team name is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Age Level</mat-label>
+            <input matInput type="text" formControlName="ageLevel" class="formControl" placeholder="Age Level"
+                #ageLevelInput required>
+            <mat-error *ngIf="ageLevel?.hasError('required')">
+                Age level is required
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" [disabled]="!formGroup.valid" (click)="saveTeam()">Save</button>
+</form>

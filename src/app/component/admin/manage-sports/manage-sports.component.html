@@ -1,1 +1,34 @@
-<p>manage-sports works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Manage Sports</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="formGroup">
+            <div class="row">
+                <mat-form-field appearance="outline">
+                    <mat-label>New Sport Name</mat-label>
+                    <input matInput type="text" formControlName="sportName" class="formControl"
+                        placeholder="New Sport Name" #sportNameInput required>
+                    <mat-error *ngIf="sportName?.hasError('required')">
+                        Sport name is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <button mat-raised-button color="primary" [disabled]="!formGroup.valid"
+                (click)="addNewSport(sportNameInput.value)">Add New Sport</button>
+        </form>
+
+        <div class="my-4">
+            <mat-form-field appearance="outline">
+                <mat-label>Sport</mat-label>
+                <mat-select [(value)]="selectedSport">
+                    <mat-option *ngFor="let sport of allSport" [value]="sport">
+                        {{sport.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button mat-raised-button color="primary" class="mx-2" (click)="manageTeams()"
+                [disabled]="!selectedSport">Manage Teams</button>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -12,14 +12,17 @@ import { ManageSportsComponent } from '@component/admin/manage-sports/manage-spo
 const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'register-user', component: SignUpComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'verify-email-address', component: VerifyEmailComponent },
   {
     path: 'dashboard',
     component: ManageTeamsComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'verify-email-address', component: VerifyEmailComponent },
-  { path: 'sports', component: ManageSportsComponent },
+  {
+    path: 'sports', component: ManageSportsComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

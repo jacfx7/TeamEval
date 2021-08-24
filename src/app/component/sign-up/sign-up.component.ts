@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '@service/auth.service';
+import { ConfirmedValidator } from '@common/confirmed.validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,7 +10,28 @@ import { AuthService } from '@service/auth.service';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
-  constructor(public authService: AuthService) {}
+  minPw = 8;
+  formGroup: FormGroup;
 
-  ngOnInit(): void {}
+  constructor(public authService: AuthService, private fb: FormBuilder) {
+    this.formGroup = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(this.minPw)]],
+      confirm_password: ['', [Validators.required]]
+    }, { validator: ConfirmedValidator('password', 'confirm_password') });
+  }
+
+  ngOnInit(): void { }
+
+  get email() {
+    return this.formGroup.get('email');
+  }
+
+  get password() {
+    return this.formGroup.get('password');
+  }
+
+  get confirm_password() {
+    return this.formGroup.get('confirm_password');
+  }
 }

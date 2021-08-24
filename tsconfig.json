@@ -18,6 +18,9 @@
       ],
       "@root/*": [
         "src/*"
+      ],
+      "@common/*": [
+        "src/app/common/*"
       ]
     },
     "outDir": "./dist/out-tsc",
