@@ -20,10 +20,6 @@ export class SportService {
   }
 
   createNewSport(data: Sport) {
-    return new Promise<any>((resolve, reject) => {
-      this.firestore.collection(this.collectionName).add(data).then(res => {
-        debugger;
-      }, err => reject(err));
-    })
+    return this.firestore.collection<Sport>(this.collectionName).add(data);
   }
 }

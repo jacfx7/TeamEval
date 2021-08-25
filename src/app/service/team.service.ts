@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 
 import { Sport } from '@model/Sport';
 import { Team } from '@model/Team';
@@ -18,10 +18,6 @@ export class TeamService {
   }
 
   saveTeam(newTeam: Team) {
-    return new Promise<any>((resolve, reject) => {
-      this.afs.collection<Team>(this.collectionName)
-        .add(newTeam)
-        .then(response => { resolve(response) }, error => reject(error));
-    });
+    return this.afs.collection<Team>(this.collectionName).add(newTeam);
   }
 }

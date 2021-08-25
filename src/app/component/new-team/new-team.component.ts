@@ -46,9 +46,10 @@ export class NewTeamComponent implements OnInit {
       sport: this.sport
     };
     this.teamService.saveTeam(team).then(res => {
-      debugger;
       this.toastr.success('New team created');
       this.saveComplete.emit(true);
+    }).catch(err => {
+      this.toastr.error(err.message);
     });
   }
 }

@@ -23,6 +23,8 @@ import { MaterialImports } from '@root/app/app.material';
 import { AuthService } from '@service/auth.service';
 import { MenuComponent } from './component/menu/menu.component';
 import { NewTeamComponent } from './component/new-team/new-team.component';
+import { ManageSkillComponent } from './component/admin/manage-skill/manage-skill.component';
+import { SkillItemComponent } from './component/admin/skill-item/skill-item.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { NewTeamComponent } from './component/new-team/new-team.component';
     VerifyEmailComponent,
     UserComponent,
     MenuComponent,
-    NewTeamComponent
+    NewTeamComponent,
+    ManageSkillComponent,
+    SkillItemComponent
   ],
   imports: [
     BrowserModule,
