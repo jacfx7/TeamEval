@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "TeamEval"
+  },
+  "targets": {
+    "TeamEval": {
+      "hosting": {
+        "app": [
+          "TeamEval"
+        ]
+      }
+    }
+  }
+}
