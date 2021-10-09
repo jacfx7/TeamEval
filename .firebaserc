@@ -1,12 +1,12 @@
 {
   "projects": {
-    "default": "TeamEval"
+    "default": "teameval"
   },
   "targets": {
     "TeamEval": {
       "hosting": {
         "app": [
-          "TeamEval"
+          "teameval"
         ]
       }
     }
