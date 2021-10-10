@@ -1,14 +1,5 @@
 {
   "projects": {
-    "default": "teameval"
-  },
-  "targets": {
-    "TeamEval": {
-      "hosting": {
-        "app": [
-          "teameval"
-        ]
-      }
-    }
+    "default": "teameval-d70cc"
   }
 }
