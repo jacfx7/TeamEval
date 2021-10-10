@@ -6,6 +6,6 @@ before_install:
 install:
   - npm install
 script:
-  - npm test
-  - npm run build
+  - npm test || travis_terminate 1;
+  - npm run build || travis_terminate 1;
   - firebase deploy --token $CI_TOKEN
