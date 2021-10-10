@@ -2,22 +2,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-import { BehaviorSubject } from 'rxjs';
 
 import { NewTeamComponent } from './new-team.component';
+import mockAngularFireStore from '@root/app/mock/mockAngularFireStore';
 
 describe('NewTeamComponent', () => {
   let component: NewTeamComponent;
   let fixture: ComponentFixture<NewTeamComponent>;
-
-  const FirestoreStub = {
-    collection: (name: string) => ({
-      doc: (_id: string) => ({
-        valueChanges: () => new BehaviorSubject({ foo: 'bar' }),
-        set: (_d: any) => new Promise<void>((resolve, _reject) => resolve()),
-      }),
-    }),
-  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -28,7 +19,7 @@ describe('NewTeamComponent', () => {
       ],
       declarations: [NewTeamComponent],
       providers: [
-        { provide: AngularFirestore, useValue: FirestoreStub }
+        { provide: AngularFirestore, useValue: mockAngularFireStore }
       ]
     })
       .compileComponents();

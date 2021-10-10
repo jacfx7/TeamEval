@@ -3,22 +3,13 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrModule } from 'ngx-toastr';
-import { BehaviorSubject } from 'rxjs';
-import mockAngularFireAuth from '../mock/mockAngularFireAuth';
 
 import { AuthService } from './auth.service';
+import mockAngularFireAuth from '../mock/mockAngularFireAuth';
+import mockAngularFireStore from '../mock/mockAngularFireStore';
 
 describe('AuthService', () => {
   let service: AuthService;
-
-  const FirestoreStub = {
-    collection: (name: string) => ({
-      doc: (_id: string) => ({
-        valueChanges: () => new BehaviorSubject({ foo: 'bar' }),
-        set: (_d: any) => new Promise<void>((resolve, _reject) => resolve()),
-      }),
-    }),
-  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -27,7 +18,7 @@ describe('AuthService', () => {
         ToastrModule.forRoot()
       ],
       providers: [
-        { provide: AngularFirestore, useValue: FirestoreStub },
+        { provide: AngularFirestore, useValue: mockAngularFireStore },
         { provide: AngularFireAuth, useValue: mockAngularFireAuth },
       ]
     });

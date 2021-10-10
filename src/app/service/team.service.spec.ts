@@ -1,21 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrModule } from 'ngx-toastr';
-import { BehaviorSubject } from 'rxjs';
 
 import { TeamService } from './team.service';
+import mockAngularFireStore from '../mock/mockAngularFireStore';
 
 describe('TeamService', () => {
   let service: TeamService;
-
-  const FirestoreStub = {
-    collection: (name: string) => ({
-      doc: (_id: string) => ({
-        valueChanges: () => new BehaviorSubject({ foo: 'bar' }),
-        set: (_d: any) => new Promise<void>((resolve, _reject) => resolve()),
-      }),
-    }),
-  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -23,7 +14,7 @@ describe('TeamService', () => {
         ToastrModule.forRoot()
       ],
       providers: [
-        { provide: AngularFirestore, useValue: FirestoreStub }
+        { provide: AngularFirestore, useValue: mockAngularFireStore }
       ]
     });
     service = TestBed.inject(TeamService);
