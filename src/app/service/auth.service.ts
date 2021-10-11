@@ -82,7 +82,7 @@ export class AuthService {
   get isLoggedIn(): boolean {
     let user = null;
     const lclUsrData = localStorage.getItem('user');
-    if (lclUsrData !== null) {
+    if (lclUsrData !== null && lclUsrData !== "") {
       user = JSON.parse(lclUsrData);
     }
 
